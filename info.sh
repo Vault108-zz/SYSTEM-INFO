@@ -19,13 +19,13 @@ while :
  echo -n "Enter your menu choice [1-8]:"
  read yourch
  case $yourch in
-   1) echo "Checking Kernel";  uname -r ; read -n 1 ;;
-   2) echo "Checking Uptime" ; uptime -p ; read -n 1 ;;
-   3) echo "Checking RAM" ; free -h ; read -n 1 ;;
-   4) echo "Checking Processor"; uname -p ; read -n 1 ;;
-   5) echo "Checking NODE ";  uname -n  ;  read -n 1  ;;
-   6) echo "IP info"; wget -nv -O ip.txt ipinfo.io && cat ip.txt && rm ip.txt; read -n 1 ;;
-   7) echo "Speetest "; wget -nv  https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py  && python speedtest.py && rm speedtest.py ; read -n 1 ;;
+   1) echo "Checking Kernel";  uname -r ; echo "Press Enter to continue";  read -n 1 ;;
+   2) echo "Checking Uptime" ; uptime -p ; echo "Press Enter to continue"; read -n 1 ;;
+   3) echo "Checking RAM" ; free -h ; echo "Press Enter to continue"; read -n 1 ;;
+   4) echo "Checking Processor"; cat /proc/cpuinfo | grep 'model name' | uniq ; read -n 1 ;;
+   5) echo "Checking NODE ";  uname -n  ; echo "Press Enter to continue"; read -n 1  ;;
+   6) echo "IP info"; wget -nv -O ip.txt ipinfo.io && cat ip.txt && rm ip.txt;echo "Press Enter to continue"; read -n 1 ;;
+   7) echo "Speetest "; wget -nv  https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py  && python speedtest.py && rm speedtest.py ; echo "Press Enter to continue"; read -n 1 ;;
    8) exit 0
       ;;
    *) echo "Opps!!! Please select choice 1,2,3,4,5,6,7 or 8"
