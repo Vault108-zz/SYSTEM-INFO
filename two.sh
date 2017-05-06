@@ -1,4 +1,4 @@
-# Script to create menus and take action according to that selected menu item.
+ # Script to create menus and take action according to that selected menu item.
 #
 #
 while :
@@ -13,9 +13,8 @@ while :
  echo "[4] Processor Info"
  echo "[5] Node Name"
  echo "[6] IP Info"
- echo "[7] Speedtest"
- echo "[8] Page 2" 
- echo "[9] Exit/stop"
+ echo "[7] Speedtest" 
+ echo "[8] Exit/stop"
  echo "----------------------------------------------"
  echo -n "Enter your menu choice [1-8]:"
  read yourch
@@ -27,10 +26,9 @@ while :
    5) echo "Checking NODE ";  uname -n  ; echo "Press Enter to continue"; read -n 1  ;;
    6) echo "IP info"; wget -nv -O ip.txt ipinfo.io && cat ip.txt && rm ip.txt;echo "Press Enter to continue"; read -n 1 ;;
    7) echo "Speetest "; wget -nv  https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py  && python speedtest.py && rm speedtest.py ; echo "Press Enter to continue"; read -n 1 ;;
-   8) echo " opening page 2"; sh 2.sh; echo "press enter to continue "; read -n 1;;  
-   9) exit 0
+   8) exit 0
       ;;
-   *) echo "Opps!!! Please select choice 1,2,3,4,5,6,7,8 or 9"
+   *) echo "Opps!!! Please select choice 1,2,3,4,5,6,7 or 8"
       echo "Press a key. . ."
       read -n 1
       ;;
