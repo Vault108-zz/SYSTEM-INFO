@@ -28,7 +28,7 @@ while :
    6) echo "IP info"; wget -nv -O ip.txt ipinfo.io && cat ip.txt && rm ip.txt;echo "Press Enter to continue"; read -n 1 ;;
    7) echo "Speetest "; wget -nv  https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py  && python speedtest.py && rm speedtest.py ; echo "Press Enter to continue"; read -n 1 ;;
    8) echo " opening page 2"; sh two.sh; echo "press enter to continue "; read -n 1;;  
-   9) exit 0
+   9) exit
       ;;
    *) echo "Opps!!! Please select choice 1,2,3,4,5,6,7,8 or 9"
       echo "Press a key. . ."
