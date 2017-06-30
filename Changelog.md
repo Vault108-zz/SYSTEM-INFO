@@ -1,5 +1,9 @@
 
 # SYSTEM-INFO
+Version 1.0
+
+-Switched to whiptale for the menu
+
 Version 0.5
 
 -Fixed the Exit line

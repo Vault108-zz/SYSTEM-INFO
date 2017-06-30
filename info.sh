@@ -1,39 +1,28 @@
-# Script to create menus and take action according to that selected menu item.
-#
-#
-while :
- do
- clear
- echo "---------------------------------------------------------"
- echo " * * * * * * * Vault's Sys Info Script * * * * * * * * * "
- echo "---------------------------------------------------------"
- echo "[1] Check Kernel"
- echo "[2] Uptime"
- echo "[3] Free RAM"
- echo "[4] Processor Info"
- echo "[5] Node Name"
- echo "[6] IP Info"
- echo "[7] Speedtest"
- echo "[8] Page 2" 
- echo "[9] Exit/stop"
- echo "----------------------------------------------"
- echo -n "Enter your menu choice [1-8]:"
- read yourch
- case $yourch in
-   1) echo "Checking Kernel";  uname -r ; echo "Press Enter to continue";  read -n 1 ;;
-   2) echo "Checking Uptime" ; uptime -p ; echo "Press Enter to continue"; read -n 1 ;;
-   3) echo "Checking RAM" ; free -h ; echo "Press Enter to continue"; read -n 1 ;;
-   4) echo "Checking Processor"; cat /proc/cpuinfo | grep 'model name' | uniq ; read -n 1 ;;
-   5) echo "Checking NODE ";  uname -n  ; echo "Press Enter to continue"; read -n 1  ;;
-   6) echo "IP info"; wget -nv -O ip.txt ipinfo.io && cat ip.txt && rm ip.txt;echo "Press Enter to continue"; read -n 1 ;;
-   7) echo "Speetest "; wget -nv  https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py  && python speedtest.py && rm speedtest.py ; echo "Press Enter to continue"; read -n 1 ;;
-   8) echo " opening page 2"; sh two.sh; echo "press enter to continue "; read -n 1;;  
-   9) exit
-      ;;
-   *) echo "Opps!!! Please select choice 1,2,3,4,5,6,7,8 or 9"
-      echo "Press a key. . ."
-      read -n 1
-      ;;
- esac
+#!/bin/bash
+clear
+whiptail --msgbox "
+---------------------------------------------------------
+* * * * * * * * * Vault's Sys Info Script * * * * * * * *
+---------------------------------------------------------
+Press Ok to continue
+ " 20 78
+trap 'rm -f choice$$' EXIT
+while whiptail --title Vaults_Sys_Info --menu "Make your choice" 16 78 5 \
+        "1)" "Check Kernel" "2)" "Up Time" "3)" "Free Ram" "4)" "CPU"  "5)" "IP Info" "6)" "Speedtest" 2> choice$$
+do      read CHOICE < choice$$ 
+        case $CHOICE in
+        ("1)")  whiptail --textbox /dev/stdin 40 80 <<<"$(uname -r)";;
+        ("2)")  whiptail --textbox /dev/stdin 40 80 <<<"$(uptime -p)";;
+        ("3)")  whiptail --textbox /dev/stdin 40 100 <<<"$(free -h > mem.txt && cat mem.txt )";;
+        ("4)")  whiptail --textbox /dev/stdin 40 80 <<<"$( cat /proc/cpuinfo | grep 'model name' | uniq )";;
+        ("5)")  whiptail --textbox /dev/stdin 40 80 <<<"$(wget -nv -O ip.txt ipinfo.io && cat ip.txt && rm ip.txt)";;
+        ("6)")  whiptail --textbox /dev/stdin 40 80 <<<"$(wget -nv https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py && python speedtest.py && rm speedtest.py)";;
+  #      ("7)")  whiptail --textbox /dev/stdin 40 80 <<<"$(uname -r)";;
+  #      ("8)")  whiptail --textbox /dev/stdin 40 80 <<<"$(uname -r)";;
+  #      ("9)")  whiptail --textbox /dev/stdin 40 80 <<<"$(uname -r)";;                    
+  #      ("10)")  whiptail --textbox /dev/stdin 40 80 <<<"$(uname -r)";;                      
+  #      ("11)")  whiptail --textbox /dev/stdin 40 80 <<<"$(uname -r)";;                    
+  #      ("12)")  whiptail --textbox /dev/stdin 40 80 <<<"$(uname -r)";;                  
+        esac
 done
 
