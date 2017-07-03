@@ -7,7 +7,7 @@ whiptail --msgbox "
 Press Ok to continue
  " 20 78
 trap 'rm -f choice$$' EXIT
-while whiptail    --title Vaults_Sys_Info --menu "Make your choice"   16 78 5 \
+while whiptail    --title Vaults_Sys_Info --menu "Make your choice"   16 100 5 \
         "1)" "Check Kernel" "2)" "Up Time" "3)" "Free Ram" "4)" "CPU"  "5)" "IP Info" "6)" "Speedtest"  "7)" "Network Info" 2> choice$$
 do      read CHOICE < choice$$
         case $CHOICE in
