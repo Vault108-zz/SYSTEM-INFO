@@ -17,7 +17,7 @@ do      read CHOICE < choice$$
         ("4)")  whiptail --textbox /dev/stdin 40 80 <<<"$( cat /proc/cpuinfo | grep 'model name' | uniq )";;
         ("5)")  whiptail --textbox /dev/stdin 40 80 <<<"$(wget -nv -O ip.txt ipinfo.io && cat ip.txt && rm ip.txt)";;
         ("6)")  whiptail --textbox /dev/stdin 40 80 <<<"$(wget -nv https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py && python speedtest.py && rm speedtest.py)";;
-        ("7)")  whiptail --textbox /dev/stdin 40 80 <<<"$( ifconfig > if.txt && cat if.txt && rm if.txt)";;
+        ("7)")  whiptail --textbox /dev/stdin 40 100 <<<"$( ifconfig > if.txt && cat if.txt && rm if.txt)";;
   #      ("8)")  whiptail --textbox /dev/stdin 40 80 <<<"$(uname -r)";;
   #      ("9)")  whiptail --textbox /dev/stdin 40 80 <<<"$(uname -r)";;                    
   #      ("10)")  whiptail --textbox /dev/stdin 40 80 <<<"$(uname -r)";;                      
